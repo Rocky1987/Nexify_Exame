@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<div id="userapp">
+    <div class="btn-div">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <input type="button" class="btn btn-primary" value="新紀錄" @@Click="user.isAdd = true">
+                </div>
+                <div class="col-md-5">
+                    <input type="button" class="btn btn-warning" value="保存">
+                </div>
+                <div class="col-md-2">
+                    <input type="button" class="btn btn-danger" value="更新" @@Click="getUsertData()">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div v-cloak>
+        <div class="content-div">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">名子</th>
+                                    <th scope="col">出生日期</th>
+                                    <th scope="col"></th>
+                                    <th scope="col">工資</th>
+                                    <th scope="col">住址</th>
+                                </tr>
+                            </thead>
+                            <tbody v-if="user.userList.length > 0">
+                                <tr v-for="(user, idx) in user.userList">
+                                    <td class="td1">{{user.Name}}</td>
+                                    <td class="td2">
+                                        {{user.DateOfBirth}}
+                                    </td>
+                                    <td><img src="../images/outline_date_range_black_24dp.png"></td>
+                                    <td class="td3">
+                                        <input type="range" id="volume" name="volume"
+                                               min="0" max="100000" :value="user.Salary">
+                                        <label for="volume">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+                                    </td>
+                                    <td class="td4"> {{user.Address}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-2">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="inser-div" v-show="user.isAdd">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td class="td1">
+                                        <input type="text" class="form-control">
+                                    </td>
+                                    <td class="td2">
+                                        <input type="text" id="datepicker" readonly style="width: 150px;" class="form-control">
+                                    </td>
+                                    <td><span onclick="showDatepicker()"> <img src="../images/outline_date_range_black_24dp.png"></span></td>
+                                    <td class="td3">
+                                        <input type="range" id="volume" name="volume"
+                                               min="0" max="100000" value="0">
+                                        <label for="volume">0</label>
+                                    </td>
+                                    <td class="td4">
+                                        <input type="text" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"></td>
+                                    <td class="canceltd">
+                                        <input type="button" class="btn btn-secondary" value="取消" @@Click="user.isAdd = false">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-2">                      
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
