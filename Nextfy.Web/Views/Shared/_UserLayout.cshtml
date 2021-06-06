@@ -27,6 +27,9 @@
                 showOn: "button",
                 buttonImage: "../images/outline_date_range_black_24dp.png",
                 buttonImageOnly: true,
+                onSelect: function () {
+                    app.user.userData.DateOfBirth = document.getElementById('datepicker').value;
+                }
             });
         });
 
